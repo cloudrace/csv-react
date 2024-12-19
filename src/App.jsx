@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import './App.css';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-require('dotenv').config()
 
 function App() {
   const [csvData, setCsvData] = useState(null);
@@ -23,7 +22,7 @@ function App() {
   };
 
   const askGemini = async (question, contents) => {
-    const API_KEY = GOOGLE_API_KEY; // Replace with your actual API key
+    const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY; // Replace with your actual API key
     const GEMINI_MODEL_ID = "gemini-1.5-flash"; // Replace with desired model ID
 
     const genAI = new GoogleGenerativeAI(API_KEY);
