@@ -33,7 +33,7 @@ function App() {
   };
 
   const askGemini = async (question, contents) => {
-    //const API_KEY = "AIzaSyCkpBnFO7lV1CRVOp1YxW0hFd_JGyah_LU"; // Replace with your actual API key
+    //const API_KEY = ""; // Replace with your actual API key
     //const GEMINI_MODEL_ID = "gemini-1.5-flash"; // Replace with desired model ID
 
    // const genAI = new GoogleGenerativeAI(API_KEY);
