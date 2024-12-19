@@ -1,22 +1,12 @@
 // src/App.jsx
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-//import {  vertexai } from '@google-cloud/vertex-ai';
-
-const {
-  FunctionDeclarationSchemaType,
-  HarmBlockThreshold,
-  HarmCategory,
-  VertexAI
-} = require('@google-cloud/vertexai');
+require('dotenv').config()
 
 function App() {
-  const [count, setCount] = useState(0);
   const [csvData, setCsvData] = useState(null);
-  const [geminiResponse, setGeminiResponse] = useState('');
+  const [setGeminiResponse] = useState('');
   const [userQuestion, setUserQuestion] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
 
@@ -33,17 +23,11 @@ function App() {
   };
 
   const askGemini = async (question, contents) => {
-    //const API_KEY = ""; // Replace with your actual API key
-    //const GEMINI_MODEL_ID = "gemini-1.5-flash"; // Replace with desired model ID
+    const API_KEY = GOOGLE_API_KEY; // Replace with your actual API key
+    const GEMINI_MODEL_ID = "gemini-1.5-flash"; // Replace with desired model ID
 
-   // const genAI = new GoogleGenerativeAI(API_KEY);
-
-    const client = new vertexai({ projectId: 'kanch-sandbox', location: 'us-central1' }); 
-    const model = client.models.get('gemini-1.5-flash'); // Replace with your deployed Gemini model name
-
-
-
-    //const model = genAI.getGenerativeModel({ model: GEMINI_MODEL_ID });
+    const genAI = new GoogleGenerativeAI(API_KEY);
+    const model = genAI.getGenerativeModel({ model: GEMINI_MODEL_ID });
 
     try {
       const prompt = `CSV data: ${contents}\nQuestion: ${question}`;
