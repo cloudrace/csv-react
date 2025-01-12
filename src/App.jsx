@@ -27,7 +27,7 @@ function App() {
 
     const genAI = new GoogleGenerativeAI(API_KEY);
     const model = genAI.getGenerativeModel({ model: GEMINI_MODEL_ID });
-
+    
     try {
       const prompt = `CSV data: ${contents}\nQuestion: ${question}`;
 
